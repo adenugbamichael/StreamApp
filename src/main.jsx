@@ -6,13 +6,16 @@ import {
   applyMiddleware,
   compose,
 } from "redux"
-// import thunk from "redux-thunk"
+import reduxThunk from "redux-thunk"
 
 import App from "./App"
 import reducers from "./reducers"
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(reducers, composeEnhancers(applyMiddleware()))
+const store = createStore(
+  reducers,
+  composeEnhancers(applyMiddleware(reduxThunk))
+)
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
